@@ -1,0 +1,8 @@
+create:
+python -m venv path/to/venv
+
+start:
+source path/to/venv/bin/activate
+
+end:
+deactivate
