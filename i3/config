@@ -194,7 +194,7 @@ bindsym $mod+Shift+r mode "resize"
 exec --no-startup-id setxkbmap pl
 
 # wallpaper
-exec --no-startup-id feh --bg-scale ~/wallpaper/wavy-black-white-background.jpg
+exec --no-startup-id feh --bg-scale ~github/config/wallpaper/wavy-black-white-background.jpg
 
 # no top bar
 for_window [class="^.*"] border pixel 1
