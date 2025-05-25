@@ -1,21 +1,22 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp" --complition
-require "user.lsp"
-require "user.telescope"
--- require "user.gitsigns"
-require "user.treesitter" --highlights
-require "user.autopairs" -- konczenie nawiasow
-require "user.comment"
-require "user.nvim-tree" --nvim exlplorer
-require "user.bufferline" -- tabs above
-require "user.lualine" --bottom nvim line
-require "user.toggleterm" -- terminal
--- require "user.project"
-require "user.impatient"
--- require "user.indentline"
-require "user.alpha"
-require "user.whichkey"
--- require "user.autocommands"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+local opts = {}
+
+require("lazy").setup("plugins")
+require("vim-options")
